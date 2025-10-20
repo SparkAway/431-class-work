@@ -1,5 +1,6 @@
 export default {
     baseUrl: 'http://212.129.244.75:8080/springboot9pi7u/',
+    adminUrl: 'http://localhost:8081/#/index',
     indexNav: [
         {
             name: '首页',
