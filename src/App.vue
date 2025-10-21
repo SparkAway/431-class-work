@@ -1,10 +1,29 @@
 <template>
-  <router-view></router-view>
+  <div id="app">
+    <router-view></router-view>
+    <div class="chat-toggle-btn" @click="toggleChat">
+      💬
+    </div>
+    <ChatWindow v-if="showChat" @close="showChat = false" />
+  </div>
+  
 </template>
 
 <script>
+import ChatWindow from './components/ChatWindow.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: { ChatWindow },
+  data() {
+    return {
+      showChat: false
+    }
+  },
+  methods: {
+    toggleChat() {
+      this.showChat = !this.showChat
+    }
+  }
 }
 </script>
 
@@ -20,6 +39,39 @@ export default {
   }
   [v-cloak]{
     display:none
+  }
+  .open-chat-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #409eff;
+    color: white;
+    cursor: pointer;
+  }
+  /* 浮动按钮 */
+  .chat-toggle-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+
+  .chat-toggle-btn:hover {
+    background-color: #0056b3;
   }
   .el-tabs__item {
     font-size: 18px;
